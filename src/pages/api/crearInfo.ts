@@ -1,9 +1,9 @@
-const { PrismaClient } = require('@prisma/client');
-
+import { PrismaClient } from '@prisma/client';
+import { NextApiRequest, NextApiResponse } from 'next';
 
 const prisma = new PrismaClient();
 
-module.exports = async function crearInfo(req, res) {
+export default async function crearInfo(req: NextApiRequest, res: NextApiResponse): Promise<void> {
     if (req.method === 'POST') {
         const { nombre, cedula, telefono, direccion, salario, userId } = req.body;
 
@@ -41,4 +41,4 @@ module.exports = async function crearInfo(req, res) {
             error: true,
         });
     }
-};
+}
